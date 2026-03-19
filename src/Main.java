@@ -19,21 +19,21 @@ public class Main {
             System.out.println("3. Buscar empleado");
             System.out.println("4. Salir");
 
-            System.out.println("\n Seleccione una opción");
+            System.out.println("\nSeleccione una opción");
             op = teclado.nextInt();
 
             switch (op){
                 case 1:
-                    System.out.println("Ingrese el nombre del empleado");
+                    System.out.println("\nIngrese el nombre del empleado");
                     String nombree = teclado.next();
                     System.out.println("Ingrese la edad del empleado");
                     int edade = teclado.nextInt();
                     System.out.println("Ingrese el Salario Base del empleado");
                     double salarioe = teclado.nextDouble();
 
-                    System.out.println("\n Seleccione el tipo de empleado");
+                    System.out.println("\nSeleccione el tipo de empleado");
                     int opc;
-                    System.out.println("1. Empleado Administrativo");
+                    System.out.println("\n1. Empleado Administrativo");
                     System.out.println("2. Empleado por Ventas");
                     System.out.println("3. Empleado por horas");
                     opc = teclado.nextInt();
@@ -66,8 +66,40 @@ public class Main {
                     break;
 
                 case 2:
-                    for(Empleado e: lstEmpleados){
-                        System.out.println(e.mostrarInfo());
+                    int opcionn;
+                    System.out.println("\n1.Mostrar todos los empleados");
+                    System.out.println("2. Mostrar empleados administrativos");
+                    System.out.println("3. Mostrar empleados por ventas");
+                    System.out.println("4. Mostrar empleados por horas");
+                    opcionn = teclado.nextInt();
+
+                    switch (opcionn){
+                        case 1:
+                            for(Empleado e: lstEmpleados){
+                                System.out.println(e.mostrarInfo());
+                            }
+                            break;
+                        case 2:
+                            for(Empleado e: lstEmpleados){
+                                if (e instanceof EmpleadoAdministrativo){
+                                    System.out.println("\n" + e.mostrarInfo());
+                                }
+                            }
+                            break;
+                        case 3:
+                            for(Empleado e: lstEmpleados){
+                                if (e instanceof EmpleadoVentas){
+                                    System.out.println("\n" + e.mostrarInfo());
+                                }
+                            }
+                            break;
+                        case 4:
+                            for(Empleado e: lstEmpleados){
+                                if (e instanceof EmpleadoHoras){
+                                    System.out.println("\n" + e.mostrarInfo());
+                                }
+                            }
+                            break;
                     }
                     break;
 
@@ -95,24 +127,67 @@ public class Main {
                         break;
                     }
 
+                    int opci;
+
+                    do {
+                        System.out.println("\n------- Menu --------");
+
+                        System.out.println("\n1. Calcular salario");
+                        System.out.println("2. Aumentar salario");
+                        System.out.println("3. Mostrar empleados mayores de edad");
+                        System.out.println("4. Salir");
+
+                        System.out.println("\n Seleccione una opción");
+                        opci = teclado.nextInt();
+
+                        switch (opci){
+                            case 1:
+                                System.out.println("El salario del empleado es: " + e1.calcularSalario());
+                                break;
+                            case 2:
+                                int opcion;
+                                System.out.println("1. Aumentar salario base");
+                                if (e1 instanceof EmpleadoAdministrativo){
+                                    System.out.println("2. Aumentar bonificación");
+                                } else if (e1 instanceof EmpleadoVentas){
+                                    System.out.println("2. Aumentar porcentaje de comisión por venta");
+                                } else if (e1 instanceof EmpleadoHoras) {
+                                    System.out.println("2. Aumentar el valor de la hora");
+                                }
+                                opcion = teclado.nextInt();
+
+                                if (opcion == 1) {
+                                    System.out.println("¿Cuánto desea aumentar?");
+                                    double aumento = teclado.nextDouble();
+                                    e1.aumentarSalario(aumento);
+                                } else if (opcion == 2) {
+                                    System.out.println("¿Cuánto desea aumentar?");
+                                    double aumentar = teclado.nextDouble();
+                                    e1.aumentarExtra(aumentar);
+                                } else {
+                                    System.out.println("Error");
+                                    break;
+                                }
+                                System.out.println("Salario actual: " + e1.calcularSalario());
+
+                                break;
+                            case 3:
+                                System.out.println("Empleados mayores de edad: ");
+                                for (Empleado e: lstEmpleados){
+                                    if(e.getEdad() >= 18){
+                                        System.out.println(e.getNombre());
+                                    }
+                                }
+                                break;
+                        }
+
+                    } while (opci != 4);
+
                     break;
 
             }
 
         } while (op != 4);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

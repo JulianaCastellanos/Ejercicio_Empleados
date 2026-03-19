@@ -45,4 +45,14 @@ public class EmpleadoHoras extends Empleado{
                 "\n Valor Hora: " + valorhora;
     }
 
+    public double calcularSalario (){
+        double salario = salarioBase+(horastrabajadas*valorhora);
+        return salario;
+    }
+
+    public double aumentarExtra (double aumentar){
+        horastrabajadas += aumentar;
+        return horastrabajadas;
+    }
+
 }

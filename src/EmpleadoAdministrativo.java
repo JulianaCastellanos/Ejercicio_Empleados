@@ -35,6 +35,14 @@ public class EmpleadoAdministrativo extends Empleado{
                 "\n bonificación: " + bonificacion;
     }
 
+    public double calcularSalario (){
+        double salario = salarioBase + bonificacion;
+        return salario;
+    }
 
+    public double aumentarExtra (double aumentar){
+        bonificacion += aumentar;
+        return bonificacion;
+    }
 
 }

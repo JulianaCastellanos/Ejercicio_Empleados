@@ -45,5 +45,14 @@ public class EmpleadoVentas extends Empleado{
                 "\n Porcentaje de comisión: " + comision + "%";
     }
 
+    public double calcularSalario (){
+        double salario = salarioBase + totalVentasMes*(comision/100);
+        return salario;
+    }
+
+    public double aumentarExtra (double aumentar){
+        comision += aumentar;
+        return comision;
+    }
 
 }

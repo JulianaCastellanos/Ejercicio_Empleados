@@ -56,7 +56,18 @@ public class Empleado {
                 "\n salario base: " + salarioBase;
     }
 
+    public double calcularSalario (){
+        double salario = salarioBase;
+        return salario;
+    }
 
+    public double aumentarSalario (double aumento){
+        salarioBase += aumento;
+        return salarioBase;
+    }
 
+    public double aumentarExtra (double aumentar){
+        return salarioBase;
+    }
 
 }
