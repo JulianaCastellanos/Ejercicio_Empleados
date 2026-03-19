@@ -71,6 +71,7 @@ public class Main {
                     System.out.println("2. Mostrar empleados administrativos");
                     System.out.println("3. Mostrar empleados por ventas");
                     System.out.println("4. Mostrar empleados por horas");
+                    System.out.println("5. Mostrar empleados mayores de edad");
                     opcionn = teclado.nextInt();
 
                     switch (opcionn){
@@ -97,6 +98,14 @@ public class Main {
                             for(Empleado e: lstEmpleados){
                                 if (e instanceof EmpleadoHoras){
                                     System.out.println("\n" + e.mostrarInfo());
+                                }
+                            }
+                            break;
+                        case 5:
+                            System.out.println("Empleados mayores de edad: ");
+                            for (Empleado e: lstEmpleados){
+                                if(e.getEdad() >= 18){
+                                    System.out.println("- " + e.getNombre());
                                 }
                             }
                             break;
@@ -134,8 +143,7 @@ public class Main {
 
                         System.out.println("\n1. Calcular salario");
                         System.out.println("2. Aumentar salario");
-                        System.out.println("3. Mostrar empleados mayores de edad");
-                        System.out.println("4. Salir");
+                        System.out.println("3. Salir");
 
                         System.out.println("\n Seleccione una opción");
                         opci = teclado.nextInt();
@@ -171,17 +179,9 @@ public class Main {
                                 System.out.println("Salario actual: " + e1.calcularSalario());
 
                                 break;
-                            case 3:
-                                System.out.println("Empleados mayores de edad: ");
-                                for (Empleado e: lstEmpleados){
-                                    if(e.getEdad() >= 18){
-                                        System.out.println(e.getNombre());
-                                    }
-                                }
-                                break;
                         }
 
-                    } while (opci != 4);
+                    } while (opci != 3);
 
                     break;
 
